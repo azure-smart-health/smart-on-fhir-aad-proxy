@@ -47,7 +47,7 @@ namespace SmartOnFHIR_AAD_Proxy.Controllers
             }
 
             if (!String.IsNullOrEmpty(state)) {
-                newQueryString += $"state={state}";
+                newQueryString += $"&state={state}";
             }
 
             return RedirectPermanent($"https://{AadHostName}/{tenant}/oauth2/authorize?{newQueryString}");
