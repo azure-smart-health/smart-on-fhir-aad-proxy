@@ -27,9 +27,8 @@ namespace SmartOnFHIR_AAD_Proxy.Controllers
             }
         }
 
-        private string AadHostName { get; }
-
         //V1 Authorize Endpoint
+        [HttpGet("{tenant}/oauth2/authorize")]
         [HttpGet("{tenant}/oauth2/v1.0/authorize")]
         public ActionResult GetV1(string tenant, 
                                 [FromQuery]string response_type,
@@ -54,7 +53,6 @@ namespace SmartOnFHIR_AAD_Proxy.Controllers
         }
 
         //V2 Authorize endpoint
-        [HttpGet("{tenant}/oauth2/authorize")]
         [HttpGet("{tenant}/oauth2/v2.0/authorize")]
         public ActionResult GetV2(string tenant, 
                                 [FromQuery]string response_type,
@@ -90,6 +88,7 @@ namespace SmartOnFHIR_AAD_Proxy.Controllers
 
         //V1 and V2 token endpoints
         [HttpPost("{tenant}/oauth2/token")]
+        [HttpPost("{tenant}/oauth2/v1.0/token")]
         [HttpPost("{tenant}/oauth2/v2.0/token")]
         public async Task<ActionResult> Post(string tenant,
                                             [FromForm]string grant_type,
