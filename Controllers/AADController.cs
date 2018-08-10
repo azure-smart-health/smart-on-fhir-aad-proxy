@@ -16,6 +16,7 @@ namespace SmartOnFHIR_AAD_Proxy.Controllers
     {
         
         private IConfiguration _configuration;
+        private string AadHostName { get; set; } 
 
         public AADController(IConfiguration config)
         {
@@ -24,6 +25,8 @@ namespace SmartOnFHIR_AAD_Proxy.Controllers
             if (String.IsNullOrEmpty(_configuration["AadHostName"]))
             {
                 AadHostName = "login.microsoftonline.com";
+            } else {
+                AadHostName = _configuration["AadHostName"];
             }
         }
 
